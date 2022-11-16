@@ -64,18 +64,22 @@ class PostsService
         return $posts;
     }
 
-    public function createPost(CreatePostDTO $createPostDTO)
+    public function createPost(CreatePostDTO $createPostDTO, $image)
     {
+        $image != '' ? $image_path = $image->store('images', 'public') : $image_path = null;
+
+
         $data = [
             'title'          => $createPostDTO->title,
             'description'    => $createPostDTO->description,
-            'image'          => $createPostDTO->image,
+            'image'          => $image_path,
+            'user_id'        => auth('api')->user()->id,
             'phone_number'   => $createPostDTO->phone_number,
         ];
         $post = $this->posts_model->create($data);
-        if($post){
+       /* if($post){
             event(new NotifyAdminWithAddedPosts($post));
-        }
+        }*/
 
         return $post;
     }

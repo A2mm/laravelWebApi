@@ -29,7 +29,7 @@ class CreatePostRequest extends FormRequest
 
             "title"        => ["required", "string"],
             "description"  => ["required", "string"],
-            "image"        => ["nullable"],
+            "image"        => ['nullable', 'mimes:png,gif,jpg,jpeg', 'max:2048'],
             "phone_number" => ["required"],
 
         ];

@@ -19,7 +19,7 @@ class PostsResource extends JsonResource
             "title"        => $this->title,
             "description"  => $this->description,
             "user_id"      => $this->user_id,
-            "user_name"    => $this->user->name,
+            "user_name"    => $this->user->name ?? null,
             "image"        => $this->image,
             "phone_number" => $this->phone_number,
 

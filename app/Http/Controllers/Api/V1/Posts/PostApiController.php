@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Posts\{FetchPostsWithFilterRequest, CreatePostRequest};
 use App\Services\Posts\PostsService;
 use App\Http\Resources\Posts\PostsResource;
-
+use Illuminate\Support\Facades\DB;
 class PostApiController extends Controller
 {
     protected $postsService;
@@ -59,8 +59,11 @@ class PostApiController extends Controller
     {
         try {
             // dd($request->getDTO());
-            $post = $this->postsService->createPost($request->getDTO());
+
+            $post = $this->postsService->createPost($request->getDTO(), $request->file('image'));
+
             return $post;
+
         } catch (\Throwable $th) {
             return response()->json(['message' => $th->getMessage()], 500);
         }
