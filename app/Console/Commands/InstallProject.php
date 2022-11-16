@@ -28,9 +28,10 @@ class InstallProject extends Command
      */
     public function handle()
     {
-       // exec('composer install');
+        exec('composer install');
 
         Artisan::call('migrate');
+
         Artisan::call('db:seed');
 
         return 'project installed successfully';

@@ -9,6 +9,7 @@ use Exception;
 use App\DTOs\Posts\{FetchPostsWithFilterDTO, CreatePostDTO};
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
+use App\Events\NotifyAdminWithAddedPosts;
 
 class PostsService
 {
@@ -60,6 +61,9 @@ class PostsService
             'phone_number'   => $createPostDTO->phone_number,
         ];
         $post = $this->posts_model->create($data);
+        if($post){
+            event(new NotifyAdminWithAddedPosts($post));
+        }
 
         return $post;
     }
