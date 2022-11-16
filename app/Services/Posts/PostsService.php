@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use App\DTOs\Posts\{FetchPostsWithFilterDTO, CreatePostDTO};
-use App\Models\Post;
+use App\Models\{Post, User};
 use Illuminate\Database\Eloquent\Builder;
 use App\Events\NotifyAdminWithAddedPosts;
 
@@ -16,6 +16,7 @@ class PostsService
     public function __construct()
     {
         $this->posts_model = new Post();
+        $this->user_model  = new User();
     }
 
     # LIST ALL POSTS
@@ -50,6 +51,17 @@ class PostsService
         $post = $this->posts_model->findOrFail($id);
 
         return $post;
+    }
+
+    public function userPosts($id)
+    {
+        $size = 10;
+
+        $posts = $this->user_model->findOrFail($id)->posts()
+            ->orderBy('id', 'desc')
+            ->paginate($size);
+
+        return $posts;
     }
 
     public function createPost(CreatePostDTO $createPostDTO)

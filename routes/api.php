@@ -37,5 +37,6 @@ Route::middleware('auth:api')->prefix('posts')->group(function()
     Route::get('/', [PostApiController::class, 'getPostsWithFilter']);
     Route::get('view/{id}', [PostApiController::class, 'viewPostDetails']);
     Route::post('create', [PostApiController::class, 'createPost']);
+    Route::get('user/{id}', [PostApiController::class, 'userPosts']);
 
 });

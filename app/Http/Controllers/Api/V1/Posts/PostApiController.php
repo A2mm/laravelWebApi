@@ -66,4 +66,14 @@ class PostApiController extends Controller
         }
     }
 
+    public function userPosts($id)
+    {
+        try {
+            $posts = $this->postsService->userPosts($id);
+            return PostsResource::collection($posts);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], 500);
+        }
+    }
+
 }
