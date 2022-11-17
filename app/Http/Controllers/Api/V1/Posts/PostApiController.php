@@ -18,7 +18,7 @@ class PostApiController extends Controller
     }
 
     /*
-    * FETCH LOGS WITH FILTERATION
+    * FETCH POSTS WITH FILTERATION
     * @param FetchPostsWithFilterRequest $request
     * @return Collection PostsResource
     */
@@ -35,7 +35,7 @@ class PostApiController extends Controller
     }
 
     /*
-    * FETCH LOG DETAILS
+    * FETCH POST DETAILS
     * @param $id
     * @return new PostsResource
     */
@@ -51,9 +51,9 @@ class PostApiController extends Controller
     }
 
     /*
-    * FETCH LOG DETAILS
-    * @param $id
-    * @return new PostsResource
+    * CREATE NEW POST
+    * @param CreatePostRequest $request
+    * @return JsonResponse
     */
     public function createPost(CreatePostRequest $request)
     {

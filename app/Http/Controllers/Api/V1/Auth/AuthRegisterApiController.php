@@ -17,9 +17,9 @@ class AuthRegisterApiController extends Controller
     }
 
     /*
-    * FETCH LOGS WITH FILTERATION
+    * REGISTER NEW USER ACCOUNT
     * @param RegisterRequest $request
-    * @return Collection PostsResource
+    * @return JsonReponse
     */
 
     public function register(RegisterRequest $request)

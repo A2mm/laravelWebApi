@@ -17,9 +17,9 @@ class ResetPasswordApiController extends Controller
     }
 
     /*
-    * FETCH LOGS WITH FILTERATION
-    * @param RegisterRequest $request
-    * @return Collection PostsResource
+    * FORGET PASSWORD NOTIFICATION
+    * @param ForgetPasswordRequest $request
+    * @return JsonResponse
     */
 
     public function forgetPassword(ForgetPasswordRequest $request)

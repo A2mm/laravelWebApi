@@ -17,9 +17,9 @@ class AuthLoginApiController extends Controller
     }
 
     /*
-    * FETCH LOGS WITH FILTERATION
-    * @param RegisterRequest $request
-    * @return Collection PostsResource
+    * LOGIN USER ACCOUNT
+    * @param LoginRequest $request
+    * @return JsonResponse
     */
 
     public function login(LoginRequest $request)
